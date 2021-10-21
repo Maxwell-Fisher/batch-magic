@@ -1,6 +1,5 @@
 title Loading Panel - @Maxwellcrafter
 for /F %%a in ('echo prompt $E ^| cmd') do set "esc=%%a"
-set array=AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789 !@#$%^&*()-=_+`~[]{}\|;':",./<>?-=,./
 setLocal enableDelayedExpansion
 set hold=ping 127.1 -n 1
 mode con: cols=32 lines=2

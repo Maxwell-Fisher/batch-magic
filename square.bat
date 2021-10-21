@@ -1,4 +1,4 @@
-title Memory corruption - @Maxwellcrafter
+title Square - @Maxwellcrafter
 mode con: cols=20 lines=11
 for /F %%a in ('echo prompt $E ^| cmd') do set "esc=%%a"
 setLocal enableDelayedExpansion

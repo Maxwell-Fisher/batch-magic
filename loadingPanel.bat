@@ -2,13 +2,16 @@ title Loading Panel - @Maxwellcrafter
 for /F %%a in ('echo prompt $E ^| cmd') do set "esc=%%a"
 setLocal enableDelayedExpansion
 set hold=ping 127.1 -n 1
-mode con: cols=32 lines=2
+mode con: cols=37 lines=2
 echo off
 cls
 
 set /p width=Width: 
 cls
 set /p height=Height: 
+cls
+choice /m "Use colour?"
+if "!errorlevel!"=="2" set bw=1
 cls
 choice /m "Slow the script down?"
 if "!errorlevel!"=="1" set slowdown=1
@@ -34,7 +37,12 @@ set "doubleUp="
 :a
 	for /l %%y in (3, 1, !heightDown!) do (
 		for /l %%z in (3, 1, !up!) do (
-			echo !esc![%%y;%%zH!esc![48;5;!random:~1,2!m!esc![35;5;!random:~1,2!m !esc![0m
+			if "!bw!"=="1" (
+				set /a "value=(!random!%%(255-240+1))+240"
+				echo !esc![%%y;%%zH!esc![48;5;!value!m !esc![0m
+			) else (
+				echo !esc![%%y;%%zH!esc![48;5;!random:~1,2!m!esc![35;5;!random:~1,2!m !esc![0m
+			)
 			if "!slowdown!"=="1" ping 127.1 -n 1 >nul
 		)
 	)
